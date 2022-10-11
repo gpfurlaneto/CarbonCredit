@@ -1,0 +1,28 @@
+{
+	"contracts": {
+		"CarbonCredit": {
+		  "source": "./cadence/contracts/CarbonCredit.cdc",
+		  "aliases": {
+				"emulator": "0xf8d6e0586b0a20c7"
+		  }
+		}
+	},
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "0xf8d6e0586b0a20c7",
+			"key": "d65e00ea5af77f0ca33d6b2d7c02636ac86d823b23c1ba7de8712396cdf8516c"
+		}
+	},
+	"deployments": {
+    "emulator": {
+      "emulator-account": [
+        "CarbonCredit"
+      ]
+    }
+  }
+}
