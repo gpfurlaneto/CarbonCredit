@@ -3,10 +3,16 @@ pub contract CarbonCredit {
     pub var totalSupply: UInt64
     pub resource NFT {
         pub let id: UInt64
+        pub var description: String
+        pub var credits: UInt64
+        pub var patrimonyRegisterNumber: String
 
-        init() {
+        init(description: String, credits: UInt64, patrimonyRegisterNumber: String) {
             self.id = CarbonCredit.totalSupply
             CarbonCredit.totalSupply = CarbonCredit.totalSupply + (1 as UInt64)
+            self.description = description
+            self.credits = credits
+            self.patrimonyRegisterNumber = patrimonyRegisterNumber
         }
     }
 
@@ -45,8 +51,12 @@ pub contract CarbonCredit {
         return <- create Collection()
     }
     
-    pub fun createNFT(): @NFT {
-        return <- create NFT()
+    pub fun createNFT(description: String, credits: UInt64, patrimonyRegisterNumber: String): @NFT {
+        return <- create NFT(
+            description: description,
+            credits: credits,
+            patrimonyRegisterNumber: patrimonyRegisterNumber
+        )
     }
     
     init() {

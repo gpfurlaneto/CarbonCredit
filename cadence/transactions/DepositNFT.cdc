@@ -1,13 +1,16 @@
 import CarbonCredit from "../contracts/CarbonCredit.cdc"
 
-transaction {
+transaction(description: String, credits: UInt64, patrimonyRegisterNumber: String) {
 
   prepare(acct: AuthAccount) {
-    log("passou aqui")
     let aReferenceToCollection = acct.borrow<&CarbonCredit.Collection>(from: /storage/Collection)
                 ?? panic("Nothing exists here! You don't have a collection")
                         
-    aReferenceToCollection.deposit(token: <- CarbonCredit.createNFT())
+    aReferenceToCollection.deposit(token: <- CarbonCredit.createNFT(
+      description: description,
+      credits: credits,
+      patrimonyRegisterNumber: patrimonyRegisterNumber
+    ))
     
    
   }
